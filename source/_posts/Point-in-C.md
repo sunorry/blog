@@ -1,7 +1,6 @@
 title: Point in C
 tags:
   - C
-  - ''
 categories:
   - C
 date: 2015-10-28 00:24:00
