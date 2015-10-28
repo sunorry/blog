@@ -6,7 +6,7 @@ categories:
 date: 2015-10-28 09:47:00
 ---
 三小时搞定语法。
-<!-- more ->
+<!-- more -->
 
 
 ## Calling Methods
