@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>对象消息 | sunorry</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="对象可以保存数据，和结构类似，区别在于：对象可以包含一组函数，并且这些函数可以使用对象保存的数据。向对象发送某个 消息(message)，可以触发相应的函数。这类由消息触发的函数称为 方法(method)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="对象消息">
+<meta property="og:url" content="http://sunorry.github.io/2015/10/31/对象消息/index.html">
+<meta property="og:site_name" content="sunorry">
+<meta property="og:description" content="对象可以保存数据，和结构类似，区别在于：对象可以包含一组函数，并且这些函数可以使用对象保存的数据。向对象发送某个 消息(message)，可以触发相应的函数。这类由消息触发的函数称为 方法(method)">
+<meta property="og:updated_time" content="2015-10-31T17:23:28.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="对象消息">
+<meta name="twitter:description" content="对象可以保存数据，和结构类似，区别在于：对象可以包含一组函数，并且这些函数可以使用对象保存的数据。向对象发送某个 消息(message)，可以触发相应的函数。这类由消息触发的函数称为 方法(method)">
+  
+    <link rel="alternative" href="/atom.xml" title="sunorry" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">sunorry</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">在平坦的路面上曲折前行</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://sunorry.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-对象消息" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/10/31/对象消息/" class="article-date">
+  <time datetime="2015-10-31T07:51:00.000Z" itemprop="datePublished">2015-10-31</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/OC/">OC</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      对象消息
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>对象可以保存数据，和结构类似，区别在于：对象可以包含一组函数，并且这些函数可以使用对象保存的数据。向对象发送某个 <strong>消息(message)</strong>，可以触发相应的函数。这类由消息触发的函数称为 <strong>方法(method)</strong><br><a id="more"></a></p>
+<h2 id="创建对象">创建对象</h2><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#import <span class="title">&lt;Foundation/Foundation.h&gt;</span></span></span><br><span class="line"><span class="keyword">int</span> main(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[]) &#123;</span><br><span class="line">    <span class="keyword">@autoreleasepool</span> &#123;</span><br><span class="line">        <span class="built_in">NSDate</span> *now =  [<span class="built_in">NSDate</span> date];</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"The new date lives at %p"</span>, now);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>程序像 <code>NSDate</code> 发送了 <code>date</code> 消息。<code>NSDate</code> 类的<code>date</code>方法会创建一个 <code>NSDate</code>实例，将其初始化为当前 时间/日期 ，然后返回新对象的地址。接着程序将得到的地址保存到 <code>now</code> 变量中，<code>now</code>变量是一个指向<code>NSdate</code>对象的指针。</p>
+<p><code>%p</code> 会输出相应对象的地址，<code>%@</code> 会输出相应对象的『描述信息』。  </p>
+<h2 id="消息详解">消息详解</h2><p>消息发送（指令）必须写在一对方括号中，并且必须包含两部分：</p>
+<ul>
+<li>指针，指向接收消息的对象</li>
+<li>方法名，要触发的方法和方法名<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSDate</span> *now = [<span class="built_in">NSDate</span> date];</span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"The date is %@"</span>, now);</span><br><span class="line"><span class="keyword">double</span> seconds = [now timeIntervalSince1970];</span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"%f"</span>, seconds);</span><br><span class="line"><span class="built_in">NSDate</span> *later = [now dateByAddingTimeInterval:<span class="number">100000</span>]; <span class="comment">// 传参</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="id">id</h2><p>当声明指向对象的指针时，通常都会明确地写出相应对象的类：<br><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NSData <span class="keyword">*</span>expiration</span><br></pre></td></tr></table></figure></p>
+<p>生命值真时并不知道对象的准确类型，可以用 <code>id</code> 类型。</p>
+<p><strong><code>id</code> 的含义是：指针，并且可以指向任意类型的 OC 对象，</strong><br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="property">id</span> delegate;</span><br></pre></td></tr></table></figure></p>
+<p>以上变量并没用使用 <code>*</code> 星号，<code>id</code> 已隐含了型号的作用。</p>
+<h2 id="消息的嵌套发送">消息的嵌套发送</h2><p>类方法<code>alloc</code> 能够创建一个新的对象，并返回指向该对象的指针。通过<code>alloc</code>创建的对象必须初始化才能使用，所以发送向的得到的指针发送 <code>init</code> 消息。在 OC 中创建对象最常见的途径就是使用 <code>alloc</code> 和 <code>init</code> 。通常会将这两个消息写在一行代码中，以嵌套的形式连续发送（这也是 Apple 唯一推荐的方法）：<br><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 系统先向 NSDate 类发送 alloc 消息</span></span><br><span class="line"><span class="comment">// 然后向得到的返回值（指向新创建 NSDate 实例的指针）发送 init 消息</span></span><br><span class="line"><span class="attr_selector">[[NSDate alloc]</span> <span class="tag">init</span>];</span><br></pre></td></tr></table></figure></p>
+<p>系统会执行最里面的消息，然后按由内至外的顺序依次执行外层消息。<br><code>init</code> 会返回指向新对象的指针（多数情况下，这个指针就是 <code>alloc</code> 方法返回那个），所以可以将 <code>init</code> 的返回值赋值给某个变量。</p>
+<p>以消息嵌套发送写法改写下面的代码。<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSDate</span> *now = [<span class="built_in">NSDate</span> date]; <span class="comment">// 转换为</span></span><br><span class="line"><span class="built_in">NSDate</span> *now = [[<span class="built_in">NSDate</span> alloc] init];</span><br></pre></td></tr></table></figure></p>
+<h3 id="多个参数">多个参数</h3><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSDate</span> *now = [<span class="built_in">NSDate</span> date];</span><br><span class="line"><span class="built_in">NSCalendar</span> *cal = [<span class="built_in">NSCalendar</span> currentCalendar];    </span><br><span class="line"><span class="built_in">NSUInteger</span> day = [cal ordinalityOfUnit:<span class="built_in">NSDayCalendarUnit</span> inUnit:<span class="built_in">NSMonthCalendarUnit</span> forDate:now];</span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"%lu"</span>, day);</span><br></pre></td></tr></table></figure>
+<p><code>ordinalityOfUnit:inUnit:forDate</code> </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://sunorry.github.io/2015/10/31/对象消息/" data-id="cigesix6u0000qq3aiq9yxufd" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OC/">OC</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/11/01/小白鼠答疑-修饰符/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          小白鼠答疑 - 修饰符
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/10/29/小白鼠答疑2-OC-C/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">小白鼠答疑2 - OC &amp; C</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OC/">OC</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OC/">OC</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小白鼠答疑系列/">小白鼠答疑系列</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/知识点积累/">知识点积累</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C/" style="font-size: 20px;">C</a> <a href="/tags/OC/" style="font-size: 15px;">OC</a> <a href="/tags/小白鼠答疑系列/" style="font-size: 15px;">小白鼠答疑系列</a> <a href="/tags/知识点积累/" style="font-size: 10px;">知识点积累</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">9</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2015/11/01/小白鼠答疑-修饰符/">小白鼠答疑 - 修饰符</a>
+          </li>
+        
+          <li>
+            <a href="/2015/10/31/对象消息/">对象消息</a>
+          </li>
+        
+          <li>
+            <a href="/2015/10/29/小白鼠答疑2-OC-C/">小白鼠答疑2 - OC &amp; C</a>
+          </li>
+        
+          <li>
+            <a href="/2015/10/29/小白鼠答疑1-init/">小白鼠答疑1 - init</a>
+          </li>
+        
+          <li>
+            <a href="/2015/10/28/class-method-instance-method/">+(class method) &amp; -(instance method)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2015 sunorry<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>

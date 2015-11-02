@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>小白鼠答疑2 - OC &amp; C | sunorry</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="本章内容总结于 《Objective-C编程》">
+<meta property="og:type" content="article">
+<meta property="og:title" content="小白鼠答疑2 - OC & C">
+<meta property="og:url" content="http://sunorry.github.io/2015/10/29/小白鼠答疑2-OC-C/index.html">
+<meta property="og:site_name" content="sunorry">
+<meta property="og:description" content="本章内容总结于 《Objective-C编程》">
+<meta property="og:updated_time" content="2015-10-29T16:56:25.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="小白鼠答疑2 - OC & C">
+<meta name="twitter:description" content="本章内容总结于 《Objective-C编程》">
+  
+    <link rel="alternative" href="/atom.xml" title="sunorry" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">sunorry</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">在平坦的路面上曲折前行</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://sunorry.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-小白鼠答疑2-OC-C" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/10/29/小白鼠答疑2-OC-C/" class="article-date">
+  <time datetime="2015-10-29T04:09:00.000Z" itemprop="datePublished">2015-10-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/OC/">OC</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      小白鼠答疑2 - OC &amp; C
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本章内容总结于 《Objective-C编程》<br><a id="more"></a></p>
+<h2 id="守护进程(daemon)">守护进程(daemon)</h2><p>有些程序没有图形化界面，并且会在后台长时间运行，这些程序成为<strong>守护进程</strong>。</p>
+<p>以守护进程 <strong>pboard</strong> 为例，当读者执行复制和粘贴操作时，pboard 守护进程会保存读者拷贝的数据。</p>
+<h2 id="地址和指针">地址和指针</h2><h3 id="获取地址">获取地址</h3><p>变量的地址：内存中的某个位置，该位置的内存保存着变量的值。</p>
+<p>通过 <code>&amp;</code> 元素符，可以得到变量的地址。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = <span class="number">17</span>;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%p"</span>, &amp;i);</span><br></pre></td></tr></table></figure></p>
+<p><code>%p</code> 是针对内存地址的转换说明。</p>
+<h3 id="用指针保存地址">用指针保存地址</h3><p>只要是大小合适的无符号整数，就可以保存指针。</p>
+<p>但是如果为变量声明特定的类型，编译器就能更容易发现错误。<br><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">float</span> *<span class="keyword">ptr</span>;</span><br></pre></td></tr></table></figure></p>
+<p>这里的 <code>ptr</code> 是变量，指向某个浮点数变量的<strong>指针(point)</strong>，ptr 本身不保存浮点数变量的值，而是指向某个地址，改地址对应的是保存浮点数的内存。</p>
+<h3 id="通过地址访问数据">通过地址访问数据</h3><p>使用 <code>*</code> 便可以反问地址中的值。<br><figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = <span class="number">17</span>;</span><br><span class="line"><span class="keyword">int</span> *num = &amp;i;</span><br><span class="line"><span class="keyword">printf</span>(<span class="string">"<span class="variable">%p</span>\n"</span>, &amp;i);</span><br><span class="line"><span class="keyword">printf</span>(<span class="string">"<span class="variable">%d</span>\n"</span>, *num);</span><br></pre></td></tr></table></figure></p>
+<p>这里 <code>*</code> 的两种用法</p>
+<ol>
+<li>声明指针，将变量 <code>num</code> 声明为 int *</li>
+<li>访问保存在 <code>num</code> 地址的 int 值。</li>
+</ol>
+<p>指针也成为引用，所以通过访问某个地址中的数据这一过程，有时也称为<em>去引用(dereferencing)</em></p>
+<h3 id="指针声明的代码规范">指针声明的代码规范</h3><p>声明一个指向 float 的指针<br><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">float</span> *powerPtr;</span><br></pre></td></tr></table></figure></p>
+<p>如果代码写成下面这样也能编译通过，<br><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">float</span>* powerPtr;</span><br></pre></td></tr></table></figure></p>
+<p>但这不是一种好的编码风格。</p>
+<p>C 允许一行代码中声明多个变量。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">float</span> x, y, z; // 三个变量都是 <span class="built_in">float</span></span><br><span class="line"><span class="built_in">float</span>* b, c;  // b 是指向 <span class="built_in">float</span> 的指针， c 的类型却是 <span class="built_in">float</span></span><br><span class="line"><span class="built_in">float</span> *b, *c;</span><br></pre></td></tr></table></figure></p>
+<p>将<code>*</code>写在变量名这边，能让声明看上去更清楚。</p>
+<h2 id="通过引用传递">通过引用传递</h2><p><code>modf()</code>函数:传入一个 <code>double</code> 类型的数，return 整数部分和小数部分。</p>
+<p>C 函数只能返回一个值， <code>modf</code> 是如何做到返回两个值呢？</p>
+<p>调用 <code>modf</code> 时，需要传入一个地址供 <code>modf</code> 保存整数部分的计算结果。准确的说，<code>modf</code>会返回小数部分，然后将整数部分拷贝到出入的地址。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;math.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[])</span> </span>&#123;</span><br><span class="line">    <span class="keyword">double</span> pi = <span class="number">3.14</span>;</span><br><span class="line">    <span class="keyword">double</span> integerPart, fractionPart;</span><br><span class="line">    <span class="comment">// 将 integerPart 的地址作为实参传入</span></span><br><span class="line">    fractionPart = <span class="built_in">modf</span>(pi, &amp;integerPart);</span><br><span class="line">    <span class="comment">// 获取 integerPart 的地址上的值</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"integerPart = %.0f, fractionPart = %.2f\n"</span>, integerPart, fractionPart);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="堆(heap)">堆(heap)</h2><p><strong>缓存区(buffer)</strong>常用来表示一段连续的内存。</p>
+<p>使用 <code>malloc</code> 函数可以得到一块内存缓冲区，这段缓冲区源自特定的内容区域–<strong>heap</strong>。堆和栈是分开的。当程序不再使用某块缓冲区时，须调用<code>free()</code>函数，释放相应的内存，将其返还给堆。</p>
+<p>假设要为程序分配一块能够至少存放 1000 个 float 变量的内存。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span>  // malloc 和 free 都来自 stdlib</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[])</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 声明指针变量</span></span><br><span class="line">    <span class="keyword">float</span> *startOfBuffer; <span class="comment">// startOfBuffer 指向缓冲区的第一个浮点数</span></span><br><span class="line">    <span class="comment">// 从堆分配指定字节数的内存</span></span><br><span class="line">    startOfBuffer = <span class="built_in">malloc</span>(<span class="number">1000</span> * <span class="keyword">sizeof</span>(<span class="keyword">float</span>));</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 使用缓冲区 .....</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//释放之前分配到的内存，使之能够被重新使用</span></span><br><span class="line">    <span class="built_in">free</span>(startOfBuffer);</span><br><span class="line">    <span class="comment">// 将指针变量赋为空</span></span><br><span class="line">    startOfBuffer = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://sunorry.github.io/2015/10/29/小白鼠答疑2-OC-C/" data-id="cigbpp453002i543aqpaoqz29" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/小白鼠答疑系列/">小白鼠答疑系列</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/10/31/对象消息/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          对象消息
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/10/29/小白鼠答疑1-init/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">小白鼠答疑1 - init</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OC/">OC</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OC/">OC</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小白鼠答疑系列/">小白鼠答疑系列</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/知识点积累/">知识点积累</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C/" style="font-size: 20px;">C</a> <a href="/tags/OC/" style="font-size: 15px;">OC</a> <a href="/tags/小白鼠答疑系列/" style="font-size: 15px;">小白鼠答疑系列</a> <a href="/tags/知识点积累/" style="font-size: 10px;">知识点积累</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">9</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2015/11/01/小白鼠答疑-修饰符/">小白鼠答疑 - 修饰符</a>
+          </li>
+        
+          <li>
+            <a href="/2015/10/31/对象消息/">对象消息</a>
+          </li>
+        
+          <li>
+            <a href="/2015/10/29/小白鼠答疑2-OC-C/">小白鼠答疑2 - OC &amp; C</a>
+          </li>
+        
+          <li>
+            <a href="/2015/10/29/小白鼠答疑1-init/">小白鼠答疑1 - init</a>
+          </li>
+        
+          <li>
+            <a href="/2015/10/28/class-method-instance-method/">+(class method) &amp; -(instance method)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2015 sunorry<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>

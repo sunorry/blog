@@ -3,21 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Hello | sunorry</title>
+  <title>小白鼠答疑1 - init | sunorry</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这是我的新博客。
-之前的文章全部删除，一是域名过期，二是内容没什么使用价值。">
+  <meta name="description" content="这篇不太好">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello">
-<meta property="og:url" content="http://sunorry.github.io/2015/10/26/Hello/index.html">
+<meta property="og:title" content="小白鼠答疑1 - init">
+<meta property="og:url" content="http://sunorry.github.io/2015/10/29/小白鼠答疑1-init/index.html">
 <meta property="og:site_name" content="sunorry">
-<meta property="og:description" content="这是我的新博客。
-之前的文章全部删除，一是域名过期，二是内容没什么使用价值。">
-<meta property="og:updated_time" content="2015-10-26T09:51:08.000Z">
+<meta property="og:description" content="这篇不太好">
+<meta property="og:updated_time" content="2015-10-29T16:58:44.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello">
-<meta name="twitter:description" content="这是我的新博客。
-之前的文章全部删除，一是域名过期，二是内容没什么使用价值。">
+<meta name="twitter:title" content="小白鼠答疑1 - init">
+<meta name="twitter:description" content="这篇不太好">
   
     <link rel="alternative" href="/atom.xml" title="sunorry" type="application/atom+xml">
   
@@ -67,12 +64,16 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-Hello" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-小白鼠答疑1-init" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2015/10/26/Hello/" class="article-date">
-  <time datetime="2015-10-26T09:09:39.000Z" itemprop="datePublished">2015-10-26</time>
+    <a href="/2015/10/29/小白鼠答疑1-init/" class="article-date">
+  <time datetime="2015-10-28T16:31:00.000Z" itemprop="datePublished">2015-10-29</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/OC/">OC</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -81,7 +82,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Hello
+      小白鼠答疑1 - init
     </h1>
   
 
@@ -89,30 +90,44 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>这是我的新博客。</p>
-<p>之前的文章全部删除，一是域名过期，二是内容没什么使用价值。</p>
+        <p>这篇不太好<br><a id="more"></a><br>Atom.m<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#import <span class="title">&lt;Foundation/Foundation.h&gt;</span></span></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">Atom</span> : <span class="title">NSObject</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">readonly</span>) <span class="built_in">NSUInteger</span> protons;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">readonly</span>) <span class="built_in">NSString</span> *chemicalElement;</span><br><span class="line"></span><br><span class="line">- (<span class="built_in">NSUInteger</span>) massNumber;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure></p>
+<p>类声明中添加了两个属性和一个实例方法。</p>
+<p>属性 <code>chemicalElement</code> 的类型为 NSString *(指向文本字符串的指针)，还拥有 readonly 属性。</p>
+<p>实例方法 <code>massNumber</code> 会返回一个非负整型值。</p>
+<p>Atom.h<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#import <span class="title">"Atom.h"</span></span></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">Atom</span></span></span><br><span class="line">- (<span class="keyword">id</span>) init &#123;</span><br><span class="line">    <span class="keyword">if</span> ((<span class="keyword">self</span> = [<span class="keyword">super</span> init])) &#123;</span><br><span class="line">        _chemicalElement = <span class="string">@"none"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="built_in">NSUInteger</span>) massNumber &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure></p>
+<p>在类接口中声明的所有<strong>方法</strong>都必须在类的实现文件中定义。</p>
+<p><code>massNumber</code> 是在 Atom 接口中声明的。为啥 <code>init</code> 也要在此处定义呢？</p>
+<p>因为 <code>init()</code> 方法是在 <code>NSObject</code> 类中声明的。</p>
+<p><code>NSObject</code> 类的 <code>init()</code> 方法用于在将内存分配给新对象后，立刻初始化该对象。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://sunorry.github.io/2015/10/26/Hello/" data-id="cigah717g000fxx3ajpmgf2j6" class="article-share-link">Share</a>
+      <a data-url="http://sunorry.github.io/2015/10/29/小白鼠答疑1-init/" data-id="cigb0rdx00000543alnkpmh7t" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/小白鼠答疑系列/">小白鼠答疑系列</a></li></ul>
+
     </footer>
   </div>
   
     
 <nav id="article-nav">
   
-    <a href="/2015/10/27/C语言复习/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2015/10/29/小白鼠答疑2-OC-C/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          C语言复习
+          小白鼠答疑2 - OC &amp; C
         
       </div>
     </a>
   
+  
+    <a href="/2015/10/28/class-method-instance-method/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">+(class method) &amp; -(instance method)</div>
+    </a>
   
 </nav>
 

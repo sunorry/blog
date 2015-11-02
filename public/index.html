@@ -65,6 +65,241 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-小白鼠答疑-修饰符" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/11/01/小白鼠答疑-修饰符/" class="article-date">
+  <time datetime="2015-11-01T15:07:00.000Z" itemprop="datePublished">2015-11-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/OC/">OC</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/01/小白鼠答疑-修饰符/">小白鼠答疑 - 修饰符</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#import <span class="title">&lt;Foundation/Foundation.h&gt;</span></span></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">Asset</span> : <span class="title">NSObject</span></span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">NSString</span> *label;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> resaleValue;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">strong</span>) <span class="built_in">NSString</span> *label;</span><br><span class="line"><span class="keyword">@property</span> <span class="keyword">unsigned</span> <span class="keyword">int</span> resaleValue;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<p><code>strong</code> 修饰符：对于这个指针所指向的对象，需要主张所有权。</p>
+<p>当某个对象没有拥有方（owner）时，就会被释放掉，释放时，对象会收到 <code>delloc</code> 消息（所有对象多会从 <code>NSObject</code> 继承 <code>dealloc</code> 方法）。</p>
+<p>覆盖 Asset 的 delloc 方法。同时为了方便知道程序释放哪个 Asset ，实现了一个 <code>NSObject</code> 的 <code>description</code> 方法。<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#import <span class="title">"Asset.h"</span></span></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">Asset</span></span></span><br><span class="line"><span class="keyword">@synthesize</span> label, resaleValue;</span><br><span class="line">- (<span class="built_in">NSString</span> *)description &#123;</span><br><span class="line">    <span class="keyword">return</span> [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"&lt;%@: $%d &gt;"</span>,</span><br><span class="line">            [<span class="keyword">self</span> label], [<span class="keyword">self</span> resaleValue]];</span><br><span class="line">&#125;</span><br><span class="line">- (<span class="keyword">void</span>)dealloc &#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"deallocating %@"</span>, <span class="keyword">self</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure></p>
+<p>%@ 转换说明：处理 %@ 时，程序会先向对应的变量发送 <code>description</code> 消息（该变量必须是指向对象的指针，否则无法响应这个消息），然后返回的结果替换%@。</p>
+<h3 id="引用类">引用类</h3><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">class</span> <span class="title">Asset</span>;</span><br></pre></td></tr></table></figure>
+<p>使用 @class 而不是 #import 时，编译器得到的相关信息很少，但是文件的处理加速更快。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://sunorry.github.io/2015/11/01/小白鼠答疑-修饰符/" data-id="cighd3zqu00coqq3aikqoy2r1" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-对象消息" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/10/31/对象消息/" class="article-date">
+  <time datetime="2015-10-31T07:51:00.000Z" itemprop="datePublished">2015-10-31</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/OC/">OC</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/31/对象消息/">对象消息</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>对象可以保存数据，和结构类似，区别在于：对象可以包含一组函数，并且这些函数可以使用对象保存的数据。向对象发送某个 <strong>消息(message)</strong>，可以触发相应的函数。这类由消息触发的函数称为 <strong>方法(method)</strong><br>
+        
+          <p class="article-more-link">
+            <a href="/2015/10/31/对象消息/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://sunorry.github.io/2015/10/31/对象消息/" data-id="cigesix6u0000qq3aiq9yxufd" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OC/">OC</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-小白鼠答疑2-OC-C" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/10/29/小白鼠答疑2-OC-C/" class="article-date">
+  <time datetime="2015-10-29T04:09:00.000Z" itemprop="datePublished">2015-10-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/OC/">OC</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/29/小白鼠答疑2-OC-C/">小白鼠答疑2 - OC &amp; C</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本章内容总结于 《Objective-C编程》<br>
+        
+          <p class="article-more-link">
+            <a href="/2015/10/29/小白鼠答疑2-OC-C/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://sunorry.github.io/2015/10/29/小白鼠答疑2-OC-C/" data-id="cigbpp453002i543aqpaoqz29" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/小白鼠答疑系列/">小白鼠答疑系列</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-小白鼠答疑1-init" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/10/29/小白鼠答疑1-init/" class="article-date">
+  <time datetime="2015-10-28T16:31:00.000Z" itemprop="datePublished">2015-10-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/OC/">OC</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/29/小白鼠答疑1-init/">小白鼠答疑1 - init</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这篇不太好<br>
+        
+          <p class="article-more-link">
+            <a href="/2015/10/29/小白鼠答疑1-init/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://sunorry.github.io/2015/10/29/小白鼠答疑1-init/" data-id="cigb0rdx00000543alnkpmh7t" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/小白鼠答疑系列/">小白鼠答疑系列</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-class-method-instance-method" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/10/28/class-method-instance-method/" class="article-date">
+  <time datetime="2015-10-28T08:04:00.000Z" itemprop="datePublished">2015-10-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/OC/">OC</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/28/class-method-instance-method/">+(class method) &amp; -(instance method)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="http://stackoverflow.com/questions/1053592/what-is-the-difference-between-class-and-instance-methods">原文链接</a></p>
+        
+          <p class="article-more-link">
+            <a href="/2015/10/28/class-method-instance-method/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://sunorry.github.io/2015/10/28/class-method-instance-method/" data-id="cigaindpf0000a53akdmhru44" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/知识点积累/">知识点积累</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Learn-Objective-C" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/10/28/Learn-Objective-C/" class="article-date">
@@ -304,7 +539,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OC/">OC</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -313,7 +548,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OC/">OC</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OC/">OC</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小白鼠答疑系列/">小白鼠答疑系列</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/知识点积累/">知识点积累</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -322,7 +557,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/C/" style="font-size: 20px;">C</a> <a href="/tags/OC/" style="font-size: 10px;">OC</a>
+      <a href="/tags/C/" style="font-size: 20px;">C</a> <a href="/tags/OC/" style="font-size: 15px;">OC</a> <a href="/tags/小白鼠答疑系列/" style="font-size: 15px;">小白鼠答疑系列</a> <a href="/tags/知识点积累/" style="font-size: 10px;">知识点积累</a>
     </div>
   </div>
 
@@ -331,7 +566,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">5</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">9</span></li></ul>
     </div>
   </div>
 
@@ -343,23 +578,23 @@
       <ul>
         
           <li>
-            <a href="/2015/10/28/Learn-Objective-C/">Learn Objective-C</a>
+            <a href="/2015/11/01/小白鼠答疑-修饰符/">小白鼠答疑 - 修饰符</a>
           </li>
         
           <li>
-            <a href="/2015/10/28/Point-in-C/">Point in C</a>
+            <a href="/2015/10/31/对象消息/">对象消息</a>
           </li>
         
           <li>
-            <a href="/2015/10/28/C-ARRAY/">Memory and ARRAY in C</a>
+            <a href="/2015/10/29/小白鼠答疑2-OC-C/">小白鼠答疑2 - OC &amp; C</a>
           </li>
         
           <li>
-            <a href="/2015/10/27/C语言复习/">C语言复习</a>
+            <a href="/2015/10/29/小白鼠答疑1-init/">小白鼠答疑1 - init</a>
           </li>
         
           <li>
-            <a href="/2015/10/26/Hello/">Hello</a>
+            <a href="/2015/10/28/class-method-instance-method/">+(class method) &amp; -(instance method)</a>
           </li>
         
       </ul>

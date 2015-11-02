@@ -3,21 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Hello | sunorry</title>
+  <title>小白鼠答疑 - 修饰符 | sunorry</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这是我的新博客。
-之前的文章全部删除，一是域名过期，二是内容没什么使用价值。">
+  <meta name="description" content="123456789#import &amp;lt;Foundation/Foundation.h&amp;gt;@interface Asset : NSObject&amp;#123;    NSString *label;    unsigned int resaleValue;&amp;#125;@property (strong) NSString *label;@property unsigned int resale">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello">
-<meta property="og:url" content="http://sunorry.github.io/2015/10/26/Hello/index.html">
+<meta property="og:title" content="小白鼠答疑 - 修饰符">
+<meta property="og:url" content="http://sunorry.github.io/2015/11/01/小白鼠答疑-修饰符/index.html">
 <meta property="og:site_name" content="sunorry">
-<meta property="og:description" content="这是我的新博客。
-之前的文章全部删除，一是域名过期，二是内容没什么使用价值。">
-<meta property="og:updated_time" content="2015-10-26T09:51:08.000Z">
+<meta property="og:description" content="123456789#import &amp;lt;Foundation/Foundation.h&amp;gt;@interface Asset : NSObject&amp;#123;    NSString *label;    unsigned int resaleValue;&amp;#125;@property (strong) NSString *label;@property unsigned int resale">
+<meta property="og:updated_time" content="2015-11-02T03:03:36.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello">
-<meta name="twitter:description" content="这是我的新博客。
-之前的文章全部删除，一是域名过期，二是内容没什么使用价值。">
+<meta name="twitter:title" content="小白鼠答疑 - 修饰符">
+<meta name="twitter:description" content="123456789#import &amp;lt;Foundation/Foundation.h&amp;gt;@interface Asset : NSObject&amp;#123;    NSString *label;    unsigned int resaleValue;&amp;#125;@property (strong) NSString *label;@property unsigned int resale">
   
     <link rel="alternative" href="/atom.xml" title="sunorry" type="application/atom+xml">
   
@@ -67,12 +64,16 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-Hello" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-小白鼠答疑-修饰符" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2015/10/26/Hello/" class="article-date">
-  <time datetime="2015-10-26T09:09:39.000Z" itemprop="datePublished">2015-10-26</time>
+    <a href="/2015/11/01/小白鼠答疑-修饰符/" class="article-date">
+  <time datetime="2015-11-01T15:07:00.000Z" itemprop="datePublished">2015-11-01</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/OC/">OC</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -81,7 +82,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Hello
+      小白鼠答疑 - 修饰符
     </h1>
   
 
@@ -89,13 +90,18 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>这是我的新博客。</p>
-<p>之前的文章全部删除，一是域名过期，二是内容没什么使用价值。</p>
+        <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#import <span class="title">&lt;Foundation/Foundation.h&gt;</span></span></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">Asset</span> : <span class="title">NSObject</span></span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">NSString</span> *label;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> resaleValue;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">strong</span>) <span class="built_in">NSString</span> *label;</span><br><span class="line"><span class="keyword">@property</span> <span class="keyword">unsigned</span> <span class="keyword">int</span> resaleValue;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<p><code>strong</code> 修饰符：对于这个指针所指向的对象，需要主张所有权。</p>
+<p>当某个对象没有拥有方（owner）时，就会被释放掉，释放时，对象会收到 <code>delloc</code> 消息（所有对象多会从 <code>NSObject</code> 继承 <code>dealloc</code> 方法）。</p>
+<p>覆盖 Asset 的 delloc 方法。同时为了方便知道程序释放哪个 Asset ，实现了一个 <code>NSObject</code> 的 <code>description</code> 方法。<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#import <span class="title">"Asset.h"</span></span></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">Asset</span></span></span><br><span class="line"><span class="keyword">@synthesize</span> label, resaleValue;</span><br><span class="line">- (<span class="built_in">NSString</span> *)description &#123;</span><br><span class="line">    <span class="keyword">return</span> [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"&lt;%@: $%d &gt;"</span>,</span><br><span class="line">            [<span class="keyword">self</span> label], [<span class="keyword">self</span> resaleValue]];</span><br><span class="line">&#125;</span><br><span class="line">- (<span class="keyword">void</span>)dealloc &#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"deallocating %@"</span>, <span class="keyword">self</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure></p>
+<p>%@ 转换说明：处理 %@ 时，程序会先向对应的变量发送 <code>description</code> 消息（该变量必须是指向对象的指针，否则无法响应这个消息），然后返回的结果替换%@。</p>
+<h3 id="引用类">引用类</h3><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">class</span> <span class="title">Asset</span>;</span><br></pre></td></tr></table></figure>
+<p>使用 @class 而不是 #import 时，编译器得到的相关信息很少，但是文件的处理加速更快。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://sunorry.github.io/2015/10/26/Hello/" data-id="cigah717g000fxx3ajpmgf2j6" class="article-share-link">Share</a>
+      <a data-url="http://sunorry.github.io/2015/11/01/小白鼠答疑-修饰符/" data-id="cighd3zqu00coqq3aikqoy2r1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -104,15 +110,11 @@
     
 <nav id="article-nav">
   
-    <a href="/2015/10/27/C语言复习/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          C语言复习
-        
-      </div>
-    </a>
   
+    <a href="/2015/10/31/对象消息/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">对象消息</div>
+    </a>
   
 </nav>
 
