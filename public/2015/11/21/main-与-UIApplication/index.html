@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>main() 与 UIApplication | sunorry</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="12345int main(int argc, char *arv[]) &amp;#123;	@autoreleasepool &amp;#123;		return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));	&amp;#125;&amp;#125;
+UIApplicationMain 函数会创建一个 UIApplica">
+<meta property="og:type" content="article">
+<meta property="og:title" content="main() 与 UIApplication">
+<meta property="og:url" content="http://sunorry.github.io/2015/11/21/main-与-UIApplication/index.html">
+<meta property="og:site_name" content="sunorry">
+<meta property="og:description" content="12345int main(int argc, char *arv[]) &amp;#123;	@autoreleasepool &amp;#123;		return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));	&amp;#125;&amp;#125;
+UIApplicationMain 函数会创建一个 UIApplica">
+<meta property="og:updated_time" content="2015-11-21T10:14:36.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="main() 与 UIApplication">
+<meta name="twitter:description" content="12345int main(int argc, char *arv[]) &amp;#123;	@autoreleasepool &amp;#123;		return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));	&amp;#125;&amp;#125;
+UIApplicationMain 函数会创建一个 UIApplica">
+  
+    <link rel="alternative" href="/atom.xml" title="sunorry" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">sunorry</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">在平坦的路面上曲折前行</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://sunorry.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-main-与-UIApplication" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/11/21/main-与-UIApplication/" class="article-date">
+  <time datetime="2015-11-21T09:59:38.000Z" itemprop="datePublished">2015-11-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      main() 与 UIApplication
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> main(<span class="keyword">int</span> argc, <span class="keyword">char</span> *arv[]) &#123;</span><br><span class="line">	<span class="keyword">@autoreleasepool</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="built_in">UIApplicationMain</span>(argc, argv, <span class="literal">nil</span>, <span class="built_in">NSStringFromClass</span>([AppDelegate class]));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>UIApplicationMain</code> 函数会创建一个 <code>UIApplication</code> 对象。每个 iOS 应用都有且只有一个 <code>UIApplication</code> 对象，该对象的作用是维护运行循环。一旦程序创建了某个 <code>UIApplication</code> 对象，该对象的运行就会一直循环下去， <code>main()</code> 的执行也会因此阻塞。</p>
+<p>此外，<code>UIApplicationMain</code> 函数还会创建某个指定类的对象，并将其设置为 <code>UIApplication</code> 的 delegate。该对象的类是由 <code>UIApplicationMain</code> 函数的最后一个参数指定的，该参数的类型是 <code>NSString</code> 对象，代表的是某个类的类名。</p>
+<p>在应用启动运行循环并开始接受事件前，<code>UIApplication</code> 对象会向其委托发送一个特定的消息，使应用能有机会完成相应的初始化工作。这个消息的名称是 <code>application:didFinishLaunchingWithOptions:</code> 。</p>
+<p>每个 iOS 应用都有一个 <code>main（）</code> ，完成的都是相同的任务。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://sunorry.github.io/2015/11/21/main-与-UIApplication/" data-id="cila9bthm001c283a6zqjbq0o" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/11/21/class-method-instance-method/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          class method &amp;&amp; instance method
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/11/16/Height-Width/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Height &amp;&amp; Width</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/">JS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OC/">OC</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Reactjs/">Reactjs</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/js/">js</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/node/">node</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/温故知新/">温故知新</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/项目总结/">项目总结</a><span class="category-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OC/">OC</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/basic/">basic</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/basicFE/">basicFE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/什么关系/">什么关系</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小白鼠答疑系列/">小白鼠答疑系列</a><span class="tag-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C/" style="font-size: 20px;">C</a> <a href="/tags/JS/" style="font-size: 15px;">JS</a> <a href="/tags/OC/" style="font-size: 15px;">OC</a> <a href="/tags/basic/" style="font-size: 10px;">basic</a> <a href="/tags/basicFE/" style="font-size: 10px;">basicFE</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/什么关系/" style="font-size: 10px;">什么关系</a> <a href="/tags/小白鼠答疑系列/" style="font-size: 15px;">小白鼠答疑系列</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">8</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/03/02/usr-bin-env/">#!/usr/bin/env</a>
+          </li>
+        
+          <li>
+            <a href="/2016/03/01/version-limit/">version limit</a>
+          </li>
+        
+          <li>
+            <a href="/2016/02/29/DOM-复习/">DOM 复习</a>
+          </li>
+        
+          <li>
+            <a href="/2016/02/29/mongo-mongoose/">mongo &amp; mongoose</a>
+          </li>
+        
+          <li>
+            <a href="/2015/12/10/随手复习/">随手复习</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 sunorry<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>

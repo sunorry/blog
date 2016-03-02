@@ -65,14 +65,14 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-小白鼠答疑-修饰符" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-usr-bin-env" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2015/11/01/小白鼠答疑-修饰符/" class="article-date">
-  <time datetime="2015-11-01T15:07:00.000Z" itemprop="datePublished">2015-11-01</time>
+    <a href="/2016/03/02/usr-bin-env/" class="article-date">
+  <time datetime="2016-03-02T03:00:00.000Z" itemprop="datePublished">2016-03-02</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/OC/">OC</a>
+    <a class="article-category-link" href="/categories/node/">node</a>
   </div>
 
   </div>
@@ -83,7 +83,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/11/01/小白鼠答疑-修饰符/">小白鼠答疑 - 修饰符</a>
+      <a class="article-title" href="/2016/03/02/usr-bin-env/">#!/usr/bin/env</a>
     </h1>
   
 
@@ -91,18 +91,62 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#import <span class="title">&lt;Foundation/Foundation.h&gt;</span></span></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">Asset</span> : <span class="title">NSObject</span></span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">NSString</span> *label;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> resaleValue;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">strong</span>) <span class="built_in">NSString</span> *label;</span><br><span class="line"><span class="keyword">@property</span> <span class="keyword">unsigned</span> <span class="keyword">int</span> resaleValue;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
-<p><code>strong</code> 修饰符：对于这个指针所指向的对象，需要主张所有权。</p>
-<p>当某个对象没有拥有方（owner）时，就会被释放掉，释放时，对象会收到 <code>delloc</code> 消息（所有对象多会从 <code>NSObject</code> 继承 <code>dealloc</code> 方法）。</p>
-<p>覆盖 Asset 的 delloc 方法。同时为了方便知道程序释放哪个 Asset ，实现了一个 <code>NSObject</code> 的 <code>description</code> 方法。<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#import <span class="title">"Asset.h"</span></span></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">Asset</span></span></span><br><span class="line"><span class="keyword">@synthesize</span> label, resaleValue;</span><br><span class="line">- (<span class="built_in">NSString</span> *)description &#123;</span><br><span class="line">    <span class="keyword">return</span> [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"&lt;%@: $%d &gt;"</span>,</span><br><span class="line">            [<span class="keyword">self</span> label], [<span class="keyword">self</span> resaleValue]];</span><br><span class="line">&#125;</span><br><span class="line">- (<span class="keyword">void</span>)dealloc &#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"deallocating %@"</span>, <span class="keyword">self</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure></p>
-<p>%@ 转换说明：处理 %@ 时，程序会先向对应的变量发送 <code>description</code> 消息（该变量必须是指向对象的指针，否则无法响应这个消息），然后返回的结果替换%@。</p>
-<h3 id="引用类">引用类</h3><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">class</span> <span class="title">Asset</span>;</span><br></pre></td></tr></table></figure>
-<p>使用 @class 而不是 #import 时，编译器得到的相关信息很少，但是文件的处理加速更快。</p>
+        <h2 id="#!/usr/bin/env">#!/usr/bin/env</h2><p><code>#!</code> 叫做 <a href="https://zh.wikipedia.org/wiki/Shebang" target="_blank" rel="external"><code>shebang</code></a> 或者 <code>Hashbang</code>.</p>
+<blockquote>
+<p>其出现在文本文件的第一行的前两个字符。 在文件中存在 Shebang 的情况下，类 Unix 操作系统的程序载入器会分析 Shebang 后的内容，将这些内容作为解释器指令，并调用该指令，并将载有 Shebang 的文件路径作为该解释器的参数</p>
+</blockquote>
+<p><code>#!/usr/bin/env 脚本解释器名称</code></p>
+<p> 参考: <a href="https://cnodejs.org/topic/50f18a44df9e9fcc5824ada5" target="_blank" rel="external">关于node的shell</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://sunorry.github.io/2015/11/01/小白鼠答疑-修饰符/" data-id="cighd3zqu00coqq3aikqoy2r1" class="article-share-link">Share</a>
+      <a data-url="http://sunorry.github.io/2016/03/02/usr-bin-env/" data-id="cila9bthi0014283a6a27icuy" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/basic/">basic</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-version-limit" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/01/version-limit/" class="article-date">
+  <time datetime="2016-03-01T03:22:00.000Z" itemprop="datePublished">2016-03-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/温故知新/">温故知新</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/01/version-limit/">version limit</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>版本号的限制，老是忘了，复习一次吧。</p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"grunt-contrib-copy"</span> : <span class="string">"^0.7.3"</span></span><br><span class="line"><span class="string">"grunt"</span> : <span class="string">"~0.4.1"</span></span><br></pre></td></tr></table></figure>
+<p><code>^</code> 是一种标宽松的限制，只限制主版本号，如上面的，只要 0 不变，<code>install</code> 时就会不断更新；<br><code>~</code> 是最小版本号才会更新。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://sunorry.github.io/2016/03/01/version-limit/" data-id="cila9bthg0011283abqszctq3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -112,14 +156,14 @@
 
 
   
-    <article id="post-对象消息" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-DOM-复习" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2015/10/31/对象消息/" class="article-date">
-  <time datetime="2015-10-31T07:51:00.000Z" itemprop="datePublished">2015-10-31</time>
+    <a href="/2016/02/29/DOM-复习/" class="article-date">
+  <time datetime="2016-02-29T12:31:00.000Z" itemprop="datePublished">2016-02-29</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/OC/">OC</a>
+    <a class="article-category-link" href="/categories/温故知新/">温故知新</a>
   </div>
 
   </div>
@@ -130,7 +174,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/31/对象消息/">对象消息</a>
+      <a class="article-title" href="/2016/02/29/DOM-复习/">DOM 复习</a>
     </h1>
   
 
@@ -138,19 +182,19 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>对象可以保存数据，和结构类似，区别在于：对象可以包含一组函数，并且这些函数可以使用对象保存的数据。向对象发送某个 <strong>消息(message)</strong>，可以触发相应的函数。这类由消息触发的函数称为 <strong>方法(method)</strong><br>
+        <p>在做一个简单的 <code>event delegate</code> 例子的时候，看到了 <code>nodeName</code> 和 <code>tagName</code> 返回的结果一样，查阅了一些知识，也算是复习了。</p>
         
           <p class="article-more-link">
-            <a href="/2015/10/31/对象消息/#more">Read More</a>
+            <a href="/2016/02/29/DOM-复习/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://sunorry.github.io/2015/10/31/对象消息/" data-id="cigesix6u0000qq3aiq9yxufd" class="article-share-link">Share</a>
+      <a data-url="http://sunorry.github.io/2016/02/29/DOM-复习/" data-id="cila9bti0001t283a3vau7nva" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OC/">OC</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/basicFE/">basicFE</a></li></ul>
 
     </footer>
   </div>
@@ -159,16 +203,12 @@
 
 
   
-    <article id="post-小白鼠答疑2-OC-C" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-mongo-mongoose" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2015/10/29/小白鼠答疑2-OC-C/" class="article-date">
-  <time datetime="2015-10-29T04:09:00.000Z" itemprop="datePublished">2015-10-29</time>
+    <a href="/2016/02/29/mongo-mongoose/" class="article-date">
+  <time datetime="2016-02-29T05:09:00.000Z" itemprop="datePublished">2016-02-29</time>
 </a>
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/OC/">OC</a>
-  </div>
-
   </div>
   <div class="article-inner">
     
@@ -177,7 +217,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/29/小白鼠答疑2-OC-C/">小白鼠答疑2 - OC &amp; C</a>
+      <a class="article-title" href="/2016/02/29/mongo-mongoose/">mongo &amp; mongoose</a>
     </h1>
   
 
@@ -185,19 +225,19 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>本章内容总结于 《Objective-C编程》<br>
+        <p>什么关系篇!<br>
         
           <p class="article-more-link">
-            <a href="/2015/10/29/小白鼠答疑2-OC-C/#more">Read More</a>
+            <a href="/2016/02/29/mongo-mongoose/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://sunorry.github.io/2015/10/29/小白鼠答疑2-OC-C/" data-id="cigbpp453002i543aqpaoqz29" class="article-share-link">Share</a>
+      <a data-url="http://sunorry.github.io/2016/02/29/mongo-mongoose/" data-id="cila9bthk0019283ailwm6s6h" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/小白鼠答疑系列/">小白鼠答疑系列</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/什么关系/">什么关系</a></li></ul>
 
     </footer>
   </div>
@@ -206,14 +246,14 @@
 
 
   
-    <article id="post-小白鼠答疑1-init" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-随手复习" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2015/10/29/小白鼠答疑1-init/" class="article-date">
-  <time datetime="2015-10-28T16:31:00.000Z" itemprop="datePublished">2015-10-29</time>
+    <a href="/2015/12/10/随手复习/" class="article-date">
+  <time datetime="2015-12-10T02:46:00.000Z" itemprop="datePublished">2015-12-10</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/OC/">OC</a>
+    <a class="article-category-link" href="/categories/js/">js</a>
   </div>
 
   </div>
@@ -224,7 +264,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/29/小白鼠答疑1-init/">小白鼠答疑1 - init</a>
+      <a class="article-title" href="/2015/12/10/随手复习/">随手复习</a>
     </h1>
   
 
@@ -232,20 +272,210 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>这篇不太好<br>
+        <p>typeof 是鉴别原始类型的最佳方法。</p>
+<p>函数是最容易鉴别的引用类型，用 <code>typeof</code> 操作符，返回的就是 <strong>function</strong>。</p>
+<p>其他类型的鉴别比较麻烦，可以使用 <code>instanceof</code>。</p>
+<p>ES5 中的方法可以很好的鉴别数组。<br><figure class="highlight sqf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Array</span>.<span class="built_in">isArray</span>(arr);</span><br></pre></td></tr></table></figure></p>
+<p>一个要注意的点：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> isOpen = <span class="keyword">new</span> <span class="built_in">Boolean</span>(<span class="literal">false</span>);</span><br><span class="line"><span class="keyword">if</span>(isOpen) &#123; alert(<span class="number">123</span>) &#125;</span><br></pre></td></tr></table></figure></p>
+<p>因为 <code>isOpen</code> 是对象，所以还是会<code>alert</code>。</p>
+<h2 id="函数">函数</h2><p>函数其实就是对像，使函数不同于其他对象的决定性特点是：<strong>函数存在一个被称为[[call]]的内部属性</strong>。内部属性都用双重括号来标注。</p>
+<p>[[call]] 属性是函数独有的，表明对象可以被执行，也是因为该属性 ECMAScript  定义 typeof 操作符对任何具有[[call]] 属性的对象返回 ‘function’。ie 的正则中好像也包含了 [[call]] 属性。fuck。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://sunorry.github.io/2015/12/10/随手复习/" data-id="cila9btgs0006283ax57jxoc6" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-正则中的-中-花-括号" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/12/07/正则中的-中-花-括号/" class="article-date">
+  <time datetime="2015-12-07T02:42:00.000Z" itemprop="datePublished">2015-12-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JS/">JS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/12/07/正则中的-中-花-括号/">正则中的[中|花]括号</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>正则表达式的() [] {}有不同的意思。<br>
         
           <p class="article-more-link">
-            <a href="/2015/10/29/小白鼠答疑1-init/#more">Read More</a>
+            <a href="/2015/12/07/正则中的-中-花-括号/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://sunorry.github.io/2015/10/29/小白鼠答疑1-init/" data-id="cigb0rdx00000543alnkpmh7t" class="article-share-link">Share</a>
+      <a data-url="http://sunorry.github.io/2015/12/07/正则中的-中-花-括号/" data-id="cila9btgv0009283ap1c5chwx" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/小白鼠答疑系列/">小白鼠答疑系列</a></li></ul>
+    </footer>
+  </div>
+  
+</article>
 
+
+  
+    <article id="post-webPack入门" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/11/30/webPack入门/" class="article-date">
+  <time datetime="2015-11-30T07:07:00.000Z" itemprop="datePublished">2015-11-30</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Reactjs/">Reactjs</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/30/webPack入门/">webpack入门</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="http://survivejs.com/webpack_react/webpack_compared/" target="_blank" rel="external">webpack vs grunt</a></p>
+<p>里面有 <a href="https://blog.jcoglan.com/2014/02/05/building-javascript-projects-with-make/" target="_blank" rel="external">how to use Make with JavaScript</a> 可以看下，应该和普通的没差。</p>
+<p><a href="http://zhuanlan.zhihu.com/FrontendMagazine/20367175" target="_blank" rel="external">webpack傻瓜式指南</a></p>
+<h2 id="什么是_webpack">什么是 webpack</h2><p>webpack is a module bundler.</p>
+<p>webpack takes modules with dependencies and generates static assets representing those modules. 他的目的就是把有依赖关系的各种文件打包成一系列的静态资源。</p>
+<p>简单来说，它就是一个配置文件，主要分为三部分：</p>
+<ul>
+<li>entry，入口文件</li>
+<li>output，处理后的文件放在哪里</li>
+<li>moudle 模块，要用什么不同的模块来处理各种类型的文件</li>
+</ul>
+<p> CommonJS和AMD是用于JavaScript模块管理的两大规范，前者定义的是模块的同步加载，主要用于NodeJS；而后者则是异步加载，通过requirejs等工具适用于前端。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://sunorry.github.io/2015/11/30/webPack入门/" data-id="cila9bthe000w283agrvmbvhf" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-项目总结-抓取键盘上的go" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/11/30/项目总结-抓取键盘上的go/" class="article-date">
+  <time datetime="2015-11-30T03:45:00.000Z" itemprop="datePublished">2015-11-30</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/项目总结/">项目总结</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/30/项目总结-抓取键盘上的go/">项目总结-抓取键盘上的go</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>客栈关键字搜索页面<br>
+        
+          <p class="article-more-link">
+            <a href="/2015/11/30/项目总结-抓取键盘上的go/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://sunorry.github.io/2015/11/30/项目总结-抓取键盘上的go/" data-id="cila9btgl0001283avm6y31ww" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-项目总结-scrollHeight-offsetHeight" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/11/30/项目总结-scrollHeight-offsetHeight/" class="article-date">
+  <time datetime="2015-11-30T03:13:00.000Z" itemprop="datePublished">2015-11-30</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/项目总结/">项目总结</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/30/项目总结-scrollHeight-offsetHeight/">项目总结-scrollHeight &amp;&amp; offsetHeight</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>bnbhybrid 的评论页面。<br>
+        
+          <p class="article-more-link">
+            <a href="/2015/11/30/项目总结-scrollHeight-offsetHeight/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://sunorry.github.io/2015/11/30/项目总结-scrollHeight-offsetHeight/" data-id="cila9btgp0004283aaz7375vt" class="article-share-link">Share</a>
+      
+      
     </footer>
   </div>
   
@@ -255,247 +485,8 @@
   
     <article id="post-class-method-instance-method" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2015/10/28/class-method-instance-method/" class="article-date">
-  <time datetime="2015-10-28T08:04:00.000Z" itemprop="datePublished">2015-10-28</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/OC/">OC</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/28/class-method-instance-method/">+(class method) &amp; -(instance method)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="http://stackoverflow.com/questions/1053592/what-is-the-difference-between-class-and-instance-methods">原文链接</a></p>
-        
-          <p class="article-more-link">
-            <a href="/2015/10/28/class-method-instance-method/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://sunorry.github.io/2015/10/28/class-method-instance-method/" data-id="cigaindpf0000a53akdmhru44" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/知识点积累/">知识点积累</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Learn-Objective-C" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/10/28/Learn-Objective-C/" class="article-date">
-  <time datetime="2015-10-28T01:47:00.000Z" itemprop="datePublished">2015-10-28</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/iOS/">iOS</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/28/Learn-Objective-C/">Learn Objective-C</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>三小时搞定语法。<br>
-        
-          <p class="article-more-link">
-            <a href="/2015/10/28/Learn-Objective-C/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://sunorry.github.io/2015/10/28/Learn-Objective-C/" data-id="cigah717e000axx3a09jqnstg" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OC/">OC</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Point-in-C" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/10/28/Point-in-C/" class="article-date">
-  <time datetime="2015-10-27T16:24:00.000Z" itemprop="datePublished">2015-10-28</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/C/">C</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/28/Point-in-C/">Point in C</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="http://blog.jobbole.com/25409/">原文地址</a></p>
-<p>这只是个简单的记录，更过看原文。</p>
-        
-          <p class="article-more-link">
-            <a href="/2015/10/28/Point-in-C/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://sunorry.github.io/2015/10/28/Point-in-C/" data-id="cigah717a0005xx3a2eer94by" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-C-ARRAY" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/10/28/C-ARRAY/" class="article-date">
-  <time datetime="2015-10-27T16:05:00.000Z" itemprop="datePublished">2015-10-28</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/C/">C</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/28/C-ARRAY/">Memory and ARRAY in C</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="http://theocacao.com/document.page/231">原文链接</a></p>
-<h2 id="Basic_memory">Basic memory</h2><p>计算内存的单位是 <code>byte</code>。一个标准的 <code>int</code> 变量占用 4 个比特。</p>
-        
-          <p class="article-more-link">
-            <a href="/2015/10/28/C-ARRAY/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://sunorry.github.io/2015/10/28/C-ARRAY/" data-id="cigah716f0000xx3ax2eo3zeg" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-C语言复习" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/10/27/C语言复习/" class="article-date">
-  <time datetime="2015-10-27T13:28:00.000Z" itemprop="datePublished">2015-10-27</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/C/">C</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/27/C语言复习/">C语言复习</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="http://cocoadevcentral.com/articles/000081.php">原文链接</a></p>
-<p>学习<code>Objective-C</code>中顺便复习下C语言。</p>
-<p>文件后缀形式 .c 。</p>
-        
-          <p class="article-more-link">
-            <a href="/2015/10/27/C语言复习/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://sunorry.github.io/2015/10/27/C语言复习/" data-id="cigah717h000gxx3aemhz8sez" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Hello" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/10/26/Hello/" class="article-date">
-  <time datetime="2015-10-26T09:09:39.000Z" itemprop="datePublished">2015-10-26</time>
+    <a href="/2015/11/21/class-method-instance-method/" class="article-date">
+  <time datetime="2015-11-21T14:57:51.000Z" itemprop="datePublished">2015-11-21</time>
 </a>
     
   </div>
@@ -506,7 +497,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/26/Hello/">Hello</a>
+      <a class="article-title" href="/2015/11/21/class-method-instance-method/">class method &amp;&amp; instance method</a>
     </h1>
   
 
@@ -514,13 +505,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>这是我的新博客。</p>
-<p>之前的文章全部删除，一是域名过期，二是内容没什么使用价值。</p>
+        <p>类方法(class method): 作用通常是创建对象，或者获取类的某些全局属性。类方法不会作用在对象上，也不能存取实例变量。</p>
+<p>实例方法(instance method): 用来操作对象（对象有时也称为类的一个实例），例如存取方法都是实例方法，用来设置和获取对象的实例变量。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://sunorry.github.io/2015/10/26/Hello/" data-id="cigah717g000fxx3ajpmgf2j6" class="article-share-link">Share</a>
+      <a data-url="http://sunorry.github.io/2015/11/21/class-method-instance-method/" data-id="cila9bthp001g283apwqa9asw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -530,6 +521,10 @@
 
 
   
+  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
 </section>
         
@@ -539,7 +534,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OC/">OC</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/">JS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OC/">OC</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Reactjs/">Reactjs</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/js/">js</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/node/">node</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/温故知新/">温故知新</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/项目总结/">项目总结</a><span class="category-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -548,7 +543,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OC/">OC</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小白鼠答疑系列/">小白鼠答疑系列</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/知识点积累/">知识点积累</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OC/">OC</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/basic/">basic</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/basicFE/">basicFE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/什么关系/">什么关系</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小白鼠答疑系列/">小白鼠答疑系列</a><span class="tag-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -557,7 +552,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/C/" style="font-size: 20px;">C</a> <a href="/tags/OC/" style="font-size: 15px;">OC</a> <a href="/tags/小白鼠答疑系列/" style="font-size: 15px;">小白鼠答疑系列</a> <a href="/tags/知识点积累/" style="font-size: 10px;">知识点积累</a>
+      <a href="/tags/C/" style="font-size: 20px;">C</a> <a href="/tags/JS/" style="font-size: 15px;">JS</a> <a href="/tags/OC/" style="font-size: 15px;">OC</a> <a href="/tags/basic/" style="font-size: 10px;">basic</a> <a href="/tags/basicFE/" style="font-size: 10px;">basicFE</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/什么关系/" style="font-size: 10px;">什么关系</a> <a href="/tags/小白鼠答疑系列/" style="font-size: 15px;">小白鼠答疑系列</a>
     </div>
   </div>
 
@@ -566,7 +561,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">9</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">8</span></li></ul>
     </div>
   </div>
 
@@ -578,23 +573,23 @@
       <ul>
         
           <li>
-            <a href="/2015/11/01/小白鼠答疑-修饰符/">小白鼠答疑 - 修饰符</a>
+            <a href="/2016/03/02/usr-bin-env/">#!/usr/bin/env</a>
           </li>
         
           <li>
-            <a href="/2015/10/31/对象消息/">对象消息</a>
+            <a href="/2016/03/01/version-limit/">version limit</a>
           </li>
         
           <li>
-            <a href="/2015/10/29/小白鼠答疑2-OC-C/">小白鼠答疑2 - OC &amp; C</a>
+            <a href="/2016/02/29/DOM-复习/">DOM 复习</a>
           </li>
         
           <li>
-            <a href="/2015/10/29/小白鼠答疑1-init/">小白鼠答疑1 - init</a>
+            <a href="/2016/02/29/mongo-mongoose/">mongo &amp; mongoose</a>
           </li>
         
           <li>
-            <a href="/2015/10/28/class-method-instance-method/">+(class method) &amp; -(instance method)</a>
+            <a href="/2015/12/10/随手复习/">随手复习</a>
           </li>
         
       </ul>
@@ -609,7 +604,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2015 sunorry<br>
+      &copy; 2016 sunorry<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

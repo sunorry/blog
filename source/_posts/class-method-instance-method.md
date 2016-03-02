@@ -1,31 +1,7 @@
-title: '+(class method) & -(instance method)'
+title: 'class method && instance method'
+date: 2015-11-21 22:57:51
 tags:
-  - 知识点积累
-categories:
-  - OC
-date: 2015-10-28 16:04:00
 ---
-[原文链接](http://stackoverflow.com/questions/1053592/what-is-the-difference-between-class-and-instance-methods)
+类方法(class method): 作用通常是创建对象，或者获取类的某些全局属性。类方法不会作用在对象上，也不能存取实例变量。
 
-<!-- more -->
-
-实例方法使用一个 class 的实例的方法。
-class 方法是调用用方法名。
-
-```
-@interface MyClass : NSObject
-
-+ (void)aClassMethod;
-- (void)anInstanceMethd
-
-@end
-```
-
-use:
-```
-[MyClass aClassMethod];
-MyClass *object = [[MyClass alloc] init];
-[object anInstanceMethod];
-```
-
-Foundation classes like NSString's +stringWithFormat: or NSArray's +arrayWithArray:. An instance method would be NSArray's -count method.
+实例方法(instance method): 用来操作对象（对象有时也称为类的一个实例），例如存取方法都是实例方法，用来设置和获取对象的实例变量。
