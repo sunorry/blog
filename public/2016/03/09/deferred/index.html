@@ -3,24 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>小白鼠答疑4 - Collection类 | sunorry</title>
+  <title>deferred | sunorry</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="NSArray/NSMutableArray创建 NSArray 实例时，需要一次性设置好所有要保存的对象。1NSArray *color = [NSArray arrayWithObjects:@&quot;Orange&quot;, @&quot;red&quot;, nil];
-nil 实参必须写，以便让该方法知道要加入对象的个数，新版本是写 count。
-不可修改的对象(NSArray)永远无须拷贝。对于可修改对象，则可能要复制">
+  <meta name="description" content="deferred">
 <meta property="og:type" content="article">
-<meta property="og:title" content="小白鼠答疑4 - Collection类">
-<meta property="og:url" content="http://sunorry.github.io/2015/11/02/小白鼠答疑4-Collection/index.html">
+<meta property="og:title" content="deferred">
+<meta property="og:url" content="http://sunorry.github.io/2016/03/09/deferred/index.html">
 <meta property="og:site_name" content="sunorry">
-<meta property="og:description" content="NSArray/NSMutableArray创建 NSArray 实例时，需要一次性设置好所有要保存的对象。1NSArray *color = [NSArray arrayWithObjects:@&quot;Orange&quot;, @&quot;red&quot;, nil];
-nil 实参必须写，以便让该方法知道要加入对象的个数，新版本是写 count。
-不可修改的对象(NSArray)永远无须拷贝。对于可修改对象，则可能要复制">
-<meta property="og:updated_time" content="2015-11-02T03:24:05.000Z">
+<meta property="og:description" content="deferred">
+<meta property="og:updated_time" content="2016-03-09T06:51:39.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="小白鼠答疑4 - Collection类">
-<meta name="twitter:description" content="NSArray/NSMutableArray创建 NSArray 实例时，需要一次性设置好所有要保存的对象。1NSArray *color = [NSArray arrayWithObjects:@&quot;Orange&quot;, @&quot;red&quot;, nil];
-nil 实参必须写，以便让该方法知道要加入对象的个数，新版本是写 count。
-不可修改的对象(NSArray)永远无须拷贝。对于可修改对象，则可能要复制">
+<meta name="twitter:title" content="deferred">
+<meta name="twitter:description" content="deferred">
   
     <link rel="alternative" href="/atom.xml" title="sunorry" type="application/atom+xml">
   
@@ -70,14 +64,14 @@ nil 实参必须写，以便让该方法知道要加入对象的个数，新版�
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-小白鼠答疑4-Collection" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-deferred" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2015/11/02/小白鼠答疑4-Collection/" class="article-date">
-  <time datetime="2015-11-02T03:08:00.000Z" itemprop="datePublished">2015-11-02</time>
+    <a href="/2016/03/09/deferred/" class="article-date">
+  <time datetime="2016-03-09T06:51:00.000Z" itemprop="datePublished">2016-03-09</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/OC/">OC</a>
+    <a class="article-category-link" href="/categories/basic/">basic</a>
   </div>
 
   </div>
@@ -88,7 +82,7 @@ nil 实参必须写，以便让该方法知道要加入对象的个数，新版�
         
   
     <h1 class="article-title" itemprop="name">
-      小白鼠答疑4 - Collection类
+      deferred
     </h1>
   
 
@@ -96,15 +90,36 @@ nil 实参必须写，以便让该方法知道要加入对象的个数，新版�
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="NSArray/NSMutableArray">NSArray/NSMutableArray</h2><p>创建 <code>NSArray</code> 实例时，需要一次性设置好所有要保存的对象。<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSArray</span> *color = [<span class="built_in">NSArray</span> arrayWithObjects:<span class="string">@"Orange"</span>, <span class="string">@"red"</span>, <span class="literal">nil</span>];</span><br></pre></td></tr></table></figure></p>
-<p><code>nil</code> 实参必须写，以便让该方法知道要加入对象的个数，新版本是写 count。</p>
-<p>不可修改的对象(NSArray)永远无须拷贝。对于可修改对象，则可能要复制一份私有拷贝，以保证程序中的其他代码无法修改对象所保存的内容。不可修改对象则没有这样的顾虑。</p>
-<p>也就是说，NSArray 的 copy 不会做额外的工作，仅仅返回本身的指针。 NSMutableArray 的 copy 则会制作一份自己的拷贝，并返回指向新数组对象的指针。</p>
+        <p>deferred</p>
+<a id="more"></a>
+<p>需求很简单：</p>
+<figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span></span> getData() &#123;</span><br><span class="line">  var d = new <span class="keyword">Deferred</span>();</span><br><span class="line">  </span><br><span class="line">  // get <span class="type">Data</span> ，可能异步也可能同步</span><br><span class="line">  // d.resolve(<span class="type">data</span>);</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> d;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">getData().done(fucntion(<span class="type">data</span>) &#123;</span><br><span class="line">  console.<span class="built_in">log</span>(<span class="type">data</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>可以是同步，也可以异步。</p>
+<ol>
+<li>同步</li>
+</ol>
+<p>先调用了 <code>resolve</code> ,然后再 <code>done</code>,先把结果缓存，然后直接把结果给 <code>done</code> 的回调。</p>
+<ol>
+<li>异步</li>
+</ol>
+<p>先调用了 <code>done</code>, 这时候用自定义事件把事件先 add ，当 <code>resolve</code> 的时候，再 fire 事件。</p>
+<p><strong>写的好的地方</strong>：</p>
+<p>调用 bind ，分别是<code>all</code>, <code>done</code>, <code>fail</code></p>
+<p>两种情况：</p>
+<ol>
+<li>同步，已经 relove 了</li>
+<li>异步，结果还未返回</li>
+</ol>
+<p>在 <code>bind</code> 里进行 status 判断，状态 OK ，则直接执行回调，不 OK ，自定义事件。</p>
+<p><code>all</code> 直接 bind(onResolvedOrRejected, onResolvedOrRejected) ,很优雅。</p>
+<p>在 <code>reject</code>, <code>resolve</code> 中，</p>
+<p>也是上面两种情况，</p>
+<p>缓存结果 + fire 事件 。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://sunorry.github.io/2015/11/02/小白鼠答疑4-Collection/" data-id="cilkhmvjz000ij03a3t5gr5yj" class="article-share-link">Share</a>
+      <a data-url="http://sunorry.github.io/2016/03/09/deferred/" data-id="cilkhmvkp001ij03a0mq4giar" class="article-share-link">Share</a>
       
       
     </footer>
@@ -113,19 +128,10 @@ nil 实参必须写，以便让该方法知道要加入对象的个数，新版�
     
 <nav id="article-nav">
   
-    <a href="/2015/11/02/小白鼠答疑5-预处理命令/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          小白鼠答疑5 - 预处理命令
-        
-      </div>
-    </a>
   
-  
-    <a href="/2015/11/01/小白鼠答疑-修饰符/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2016/03/03/domain-cookie/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">小白鼠答疑3 - 修饰符</div>
+      <div class="article-nav-title">domain-cookie</div>
     </a>
   
 </nav>

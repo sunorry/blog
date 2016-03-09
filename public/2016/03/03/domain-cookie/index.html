@@ -3,24 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>小白鼠答疑4 - Collection类 | sunorry</title>
+  <title>domain-cookie | sunorry</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="NSArray/NSMutableArray创建 NSArray 实例时，需要一次性设置好所有要保存的对象。1NSArray *color = [NSArray arrayWithObjects:@&quot;Orange&quot;, @&quot;red&quot;, nil];
-nil 实参必须写，以便让该方法知道要加入对象的个数，新版本是写 count。
-不可修改的对象(NSArray)永远无须拷贝。对于可修改对象，则可能要复制">
+  <meta name="description" content="domain 表示的是 cookie 所在的域，默认为请求的地址，如网址为 www.qunar.com/xxx，那么 domain 默认为www.qunarc.com 。而跨域访问，如域 A 为 bnb.qunar.com，域 B 为 hotel.qunar.com，那么在域 A 生产一个令域 A 和域 B 都能访问的 cookie 就要将该 cookie 的 domain 设置为 .qunar.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="小白鼠答疑4 - Collection类">
-<meta property="og:url" content="http://sunorry.github.io/2015/11/02/小白鼠答疑4-Collection/index.html">
+<meta property="og:title" content="domain-cookie">
+<meta property="og:url" content="http://sunorry.github.io/2016/03/03/domain-cookie/index.html">
 <meta property="og:site_name" content="sunorry">
-<meta property="og:description" content="NSArray/NSMutableArray创建 NSArray 实例时，需要一次性设置好所有要保存的对象。1NSArray *color = [NSArray arrayWithObjects:@&quot;Orange&quot;, @&quot;red&quot;, nil];
-nil 实参必须写，以便让该方法知道要加入对象的个数，新版本是写 count。
-不可修改的对象(NSArray)永远无须拷贝。对于可修改对象，则可能要复制">
-<meta property="og:updated_time" content="2015-11-02T03:24:05.000Z">
+<meta property="og:description" content="domain 表示的是 cookie 所在的域，默认为请求的地址，如网址为 www.qunar.com/xxx，那么 domain 默认为www.qunarc.com 。而跨域访问，如域 A 为 bnb.qunar.com，域 B 为 hotel.qunar.com，那么在域 A 生产一个令域 A 和域 B 都能访问的 cookie 就要将该 cookie 的 domain 设置为 .qunar.">
+<meta property="og:updated_time" content="2016-03-03T03:25:06.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="小白鼠答疑4 - Collection类">
-<meta name="twitter:description" content="NSArray/NSMutableArray创建 NSArray 实例时，需要一次性设置好所有要保存的对象。1NSArray *color = [NSArray arrayWithObjects:@&quot;Orange&quot;, @&quot;red&quot;, nil];
-nil 实参必须写，以便让该方法知道要加入对象的个数，新版本是写 count。
-不可修改的对象(NSArray)永远无须拷贝。对于可修改对象，则可能要复制">
+<meta name="twitter:title" content="domain-cookie">
+<meta name="twitter:description" content="domain 表示的是 cookie 所在的域，默认为请求的地址，如网址为 www.qunar.com/xxx，那么 domain 默认为www.qunarc.com 。而跨域访问，如域 A 为 bnb.qunar.com，域 B 为 hotel.qunar.com，那么在域 A 生产一个令域 A 和域 B 都能访问的 cookie 就要将该 cookie 的 domain 设置为 .qunar.">
   
     <link rel="alternative" href="/atom.xml" title="sunorry" type="application/atom+xml">
   
@@ -70,16 +64,12 @@ nil 实参必须写，以便让该方法知道要加入对象的个数，新版�
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-小白鼠答疑4-Collection" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-domain-cookie" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2015/11/02/小白鼠答疑4-Collection/" class="article-date">
-  <time datetime="2015-11-02T03:08:00.000Z" itemprop="datePublished">2015-11-02</time>
+    <a href="/2016/03/03/domain-cookie/" class="article-date">
+  <time datetime="2016-03-03T03:24:49.000Z" itemprop="datePublished">2016-03-03</time>
 </a>
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/OC/">OC</a>
-  </div>
-
   </div>
   <div class="article-inner">
     
@@ -88,7 +78,7 @@ nil 实参必须写，以便让该方法知道要加入对象的个数，新版�
         
   
     <h1 class="article-title" itemprop="name">
-      小白鼠答疑4 - Collection类
+      domain-cookie
     </h1>
   
 
@@ -96,15 +86,19 @@ nil 实参必须写，以便让该方法知道要加入对象的个数，新版�
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="NSArray/NSMutableArray">NSArray/NSMutableArray</h2><p>创建 <code>NSArray</code> 实例时，需要一次性设置好所有要保存的对象。<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSArray</span> *color = [<span class="built_in">NSArray</span> arrayWithObjects:<span class="string">@"Orange"</span>, <span class="string">@"red"</span>, <span class="literal">nil</span>];</span><br></pre></td></tr></table></figure></p>
-<p><code>nil</code> 实参必须写，以便让该方法知道要加入对象的个数，新版本是写 count。</p>
-<p>不可修改的对象(NSArray)永远无须拷贝。对于可修改对象，则可能要复制一份私有拷贝，以保证程序中的其他代码无法修改对象所保存的内容。不可修改对象则没有这样的顾虑。</p>
-<p>也就是说，NSArray 的 copy 不会做额外的工作，仅仅返回本身的指针。 NSMutableArray 的 copy 则会制作一份自己的拷贝，并返回指向新数组对象的指针。</p>
+        <ol>
+<li><p><code>domain</code> 表示的是 <code>cookie</code> 所在的域，默认为请求的地址，如网址为 <code>www.qunar.com/xxx</code>，那么 <code>domain</code> 默认为<code>www.qunarc.com</code> 。而跨域访问，如域 A 为 <code>bnb.qunar.com</code>，域 B 为 <code>hotel.qunar.com</code>，那么在域 A 生产一个令域 A 和域 B 都能访问的 <code>cookie</code> 就要将该 <code>cookie</code> 的 <code>domain</code> 设置为 <code>.qunar.com</code> ；如果要在域 A 生产一个令域 A 不能访问而域 B 能访问的 <code>cookie</code> 就要将该 <code>cookie</code> 的 <code>domain</code> 设置为 <code>hotel.qunar.com</code>。</p>
+</li>
+<li><p><code>path</code> 表示 <code>cookie</code> 所在的目录，<code>qunar.com</code> 默认为 <code>/</code> ，就是根目录。在同一个服务器上有目录如下：<code>/test/</code>, <code>/test/cd/</code> , <code>/test/dd/</code>，现设一个 <code>cookie1</code> 的 <code>path</code> 为 <code>/test/</code>，<code>cookie2</code> 的 <code>path</code> 为 <code>/test/cd/</code>，那么 <code>test</code> 下的所有页面都可以访问到 <code>cookie1</code>，而 <code>/test/</code> 和 <code>/test/dd/</code> 的子页面不能访问 <code>cookie2</code>。这是因为 <code>cookie</code> 能让其 <code>path</code> 路径下的页面访问。</p>
+</li>
+<li><p>浏览器会将 <code>domain</code> 和 <code>path</code> 都相同的 <code>cookie</code> 保存在一个文件里，<code>cookie</code> 间用 <code>*</code> 隔开。</p>
+</li>
+</ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://sunorry.github.io/2015/11/02/小白鼠答疑4-Collection/" data-id="cilkhmvjz000ij03a3t5gr5yj" class="article-share-link">Share</a>
+      <a data-url="http://sunorry.github.io/2016/03/03/domain-cookie/" data-id="cilkhmvko001hj03afyq0bm3n" class="article-share-link">Share</a>
       
       
     </footer>
@@ -113,19 +107,19 @@ nil 实参必须写，以便让该方法知道要加入对象的个数，新版�
     
 <nav id="article-nav">
   
-    <a href="/2015/11/02/小白鼠答疑5-预处理命令/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/03/09/deferred/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          小白鼠答疑5 - 预处理命令
+          deferred
         
       </div>
     </a>
   
   
-    <a href="/2015/11/01/小白鼠答疑-修饰符/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2016/03/02/PVUV/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">小白鼠答疑3 - 修饰符</div>
+      <div class="article-nav-title">PVUV</div>
     </a>
   
 </nav>
