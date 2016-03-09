@@ -11,7 +11,7 @@
 <meta property="og:url" content="http://sunorry.github.io/2016/03/09/deferred/index.html">
 <meta property="og:site_name" content="sunorry">
 <meta property="og:description" content="deferred">
-<meta property="og:updated_time" content="2016-03-09T06:51:39.000Z">
+<meta property="og:updated_time" content="2016-03-09T06:53:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="deferred">
 <meta name="twitter:description" content="deferred">
@@ -92,6 +92,7 @@
       
         <p>deferred</p>
 <a id="more"></a>
+<p><a href="https://github.com/sunorry/basicsFE/blob/master/deferred.js" target="_blank" rel="external">github</a></p>
 <p>需求很简单：</p>
 <figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span></span> getData() &#123;</span><br><span class="line">  var d = new <span class="keyword">Deferred</span>();</span><br><span class="line">  </span><br><span class="line">  // get <span class="type">Data</span> ，可能异步也可能同步</span><br><span class="line">  // d.resolve(<span class="type">data</span>);</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> d;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">getData().done(fucntion(<span class="type">data</span>) &#123;</span><br><span class="line">  console.<span class="built_in">log</span>(<span class="type">data</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <p>可以是同步，也可以异步。</p>
@@ -119,7 +120,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://sunorry.github.io/2016/03/09/deferred/" data-id="cilkhmvkp001ij03a0mq4giar" class="article-share-link">Share</a>
+      <a data-url="http://sunorry.github.io/2016/03/09/deferred/" data-id="cilkhocnw001il73ah9uinwsn" class="article-share-link">Share</a>
       
       
     </footer>

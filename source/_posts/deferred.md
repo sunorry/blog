@@ -8,6 +8,8 @@ deferred
 
 <!-- more -->
 
+[github](https://github.com/sunorry/basicsFE/blob/master/deferred.js)
+
 需求很简单：
 
 ```
